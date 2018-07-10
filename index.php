@@ -74,13 +74,13 @@ setcookie("name","value",time()+10000);
 				fetch(uri, param).then(function(res) {
 					debugger;
 					return res.text();
-				}, function(err) {
+				}).catch(function(err) {
 					debugger;
 					console.log(err);
 				}).then(function(data) {
 					debugger;
 					document.getElementById('wins').innerHTML = data;
-				}, function(err) {
+				}).catch(function(err) {
 					debugger;
 					console.log(err);
 				});
