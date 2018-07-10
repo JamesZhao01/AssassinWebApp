@@ -63,30 +63,51 @@ setcookie("name","value",time()+10000);
 			return new Promise(resolve => setTimeout(resolve, time))
 		}
 		async function f() {
-			while(true) {
-				const uri = "http://localhost:1337/ex";
-				var param = {method : "POST", credentials: 'same-origin', body: '{"user": "test", "pass": "root"}', headers : {'Cookie': readCookie('name')}};
+			// while(true) {
+			// 	const uri = "http://localhost:1337/ex";
+			// 	var param = {method : "POST", credentials: 'same-origin', body: '{"user": "test", "pass": "root"}', headers : {'Cookie': readCookie('name')}};
 
-				await sleep(5000);
-				debugger;
-				document.getElementById('losses').innerHTML = i;
-				i++;
-				fetch(uri, param).then(function(res) {
-					debugger;
-					return res.text();
-				}).catch(function(err) {
-					debugger;
-					console.log(err);
-				}).then(function(data) {
-					debugger;
-					document.getElementById('wins').innerHTML = data;
-				}).catch(function(err) {
-					debugger;
-					console.log(err);
-				});
-				document.getElementById('place').innerHTML = 'done fetching'
-			}
+			// 	await sleep(5000);
+			// 	debugger;
+			// 	document.getElementById('losses').innerHTML = i;
+			// 	i++;
+			// 	fetch(uri, param).then(function(res) {
+			// 		debugger;
+			// 		return res.text();
+			// 	}, function(err) {
+			// 		debugger;
+			// 		console.log(err);
+			// 	}).then(function(data) {
+			// 		debugger;
+			// 		document.getElementById('wins').innerHTML = data;
+			// 	}, function(err) {
+			// 		debugger;
+			// 		console.log(err);
+			// 	});
+			// 	document.getElementById('place').innerHTML = 'done fetching'
+			// }
+
 		}
+		var i = 1;
+		async function xdd() {
+			const uri = " http://localhost:1337/ex ";
+			var param = {method : "POST", credentials: 'same-origin', body: '{"user": "test", "pass": "root"}'};
+			const response = await fetch(uri, param);
+			document.write(response);
+			var xd = await response.text();
+			document.write(xd);
+			document.write('xd');
+		}
+		async function run() {
+		while(true) {
+			await sleep(5000);
+			xdd();
+			console.log(i);
+			i++;
+		}
+	}
+	run();
+
 		function readCookie(name) {
 			var nameEQ = name + "=";
 			var ca = document.cookie.split(';');
@@ -99,6 +120,6 @@ setcookie("name","value",time()+10000);
 		}
 		f();
 	</script>
-	
+
 </body>
 </html>
